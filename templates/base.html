@@ -27,9 +27,9 @@
         <header id="banner" class="body">
                 <h1><a href="{{ SITEURL }}/index.html">{{ SITENAME }} {% if SITESUBTITLE %} <strong>{{ SITESUBTITLE }}</strong>{% endif %}</a></h1>
                 {% if HEADERIMAGE %}
-		<a href="{{ SITEURL }}/index.html"><img alt="{{ SITENAME }}" src="{{ SITEURL }}/{{ HEADERIMAGE }}" /></a>
+                <a href="{{ SITEURL }}/index.html"><img alt="{{ SITENAME }}" src="{{ SITEURL }}/{{ HEADERIMAGE }}" /></a>
                 {% endif %}
-		<nav {% if not HEADERIMAGE %}id="navbothround"{% endif %}><ul>
+                <nav {% if not HEADERIMAGE %}class="bothround"{% endif %}><ul>
                 {% for title, url in MENUITEMS %}
                     <li {% if page is defined and url == page.url %} class="active" {% endif %}>
                         <a href="{{ SITEURL }}/{{ url }}">{{ title }}</a>

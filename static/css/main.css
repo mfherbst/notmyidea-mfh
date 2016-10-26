@@ -185,7 +185,7 @@ img.left, figure.left {float: right; margin: 0 0 2em 2em;}
 		font-weight: bold;
 		margin: 0 auto .6em auto;
 		text-decoration: none;
-		width: 427px;
+		width: 90%;
 	}
 	#banner h1 a:hover, #banner h1 a:active {
 		background: none;
@@ -214,7 +214,7 @@ img.left, figure.left {float: right; margin: 0 0 2em 2em;}
 		-webkit-border-bottom-right-radius: 5px;
 	}
 
-	#banner #navbothround {
+	#banner nav.bothround {
 		border-top-left-radius: 5px;
 		-moz-border-top-left-radius: 5px;
 		-webkit-border-top-left-radius: 5px;
