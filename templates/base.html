@@ -31,13 +31,27 @@
                 {% endif %}
                 <nav {% if not HEADERIMAGE %}class="bothround"{% endif %}><ul>
                 {% for title, url in MENUITEMS %}
-                    <li {% if page is defined and url == page.url %} class="active" {% endif %}>
+                    {# If either the menu item's url is the current page's url or
+                       one of its subitems' url is the current page's url it is active #}
+                    <li {% if page is defined and (page.url == url
+                               or (title in MENUSUBITEMS
+                                     and page.url in (MENUSUBITEMS[title] | map("last"))))
+                         %}class="active"{% endif %}>
                         <a href="{{ SITEURL }}/{{ url }}">{{ title }}</a>
+                        {% if title in MENUSUBITEMS %}
+                        <ul class="dropdown">
+                           {% for stitle, surl in MENUSUBITEMS[title] %}
+                           <li {% if page is defined and surl == page.url %} class="active" {% endif %}>
+                              <a href="{{ SITEURL }}/{{ surl }}">{{ stitle }}</a>
+                           </li>
+                           {% endfor %}
+                        </ul>
+                        {% endif %}
                     </li>
                 {% endfor %}
                 {% if DISPLAY_PAGES_ON_MENU != False %}
                 {% for p in PAGES %}
-                    <li {% if p == page %}class="active"{% endif %}><a href="{{ SITEURL }}/{{ p.url }}">{{ p.title }}</a></li>
+                    <li {% if p == page and p != '' %}class="active"{% endif %}><a href="{{ SITEURL }}/{{ p.url }}">{{ p.title }}</a></li>
                 {% endfor %}
                 {% endif %}
                 <li><a href="{{ SITEURL }}/{{ ARCHIVES_URL }}">Archives</a></li>
