@@ -88,10 +88,10 @@
 
         <footer id="footer" class="body">
                 <address id="about" class="vcard body">
-                Proudly powered by <a href="http://alexis.notmyidea.org/pelican/">pelican</a>, which takes great advantages of <a href="http://python.org">python</a>.
+                        Powered by <a href="http://alexis.notmyidea.org/pelican/">pelican</a>,
+                        <a href="http://python.org">python</a> and <a href="http://jinja.pocoo.org/">Jinja2</a>.
                 </address><!-- /#about -->
-
-                <p>The theme is «notmyidea-cms», a modified version of «notmyidea», the default theme.</p>
+                {% if FOOTER_INSERT %}{{ FOOTER_INSERT }}{% endif %}
         </footer><!-- /#footer -->
 
 {% include 'analytics.html' %}
