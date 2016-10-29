@@ -1,4 +1,7 @@
 {% extends "base.html" %}
+{% if BLOGTITLE %}
+{% block title %}{{ BLOGTITLE }}{%endblock%}
+{% endif %}
 {% block content_title %}{% endblock %}
 {% block content %}
 {% if articles %}

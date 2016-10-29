@@ -1,7 +1,14 @@
 {% extends "base.html" %}
+{% if BLOGTITLE %}
+{% block title %}{{ BLOGTITLE }}{%endblock%}
+{% endif %}
 {% block content %}
 <section id="content" class="body">
+{% if BLOGTITLE %}
+<h1>Archives for {{ BLOGTITLE }}</h1>
+{% else %}
 <h1>Archives for {{ SITENAME }}</h1>
+{% endif %}
 
 <dl>
 {% for article in dates %}
