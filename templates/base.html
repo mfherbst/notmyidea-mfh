@@ -33,15 +33,22 @@
                 {% for title, url in MENUITEMS %}
                     {# If either the menu item's url is the current page's url or
                        one of its subitems' url is the current page's url it is active #}
-                    <li {% if page is defined and (page.url == url
-                               or (title in MENUSUBITEMS
-                                     and page.url in (MENUSUBITEMS[title] | map("last"))))
+                    <li {% if
+                              ( page is defined and page.url == url )
+                           or ( title in MENUSUBITEMS
+                                  and ( page is defined 
+                                        and page.url in (MENUSUBITEMS[title] | map("last"))
+                                      ) or (
+                                        output_file in (MENUSUBITEMS[title] | map("last"))
+                                      )
+                              )
                          %}class="active"{% endif %}>
                         <a href="{{ SITEURL }}/{{ url }}">{{ title }}</a>
                         {% if title in MENUSUBITEMS %}
                         <ul class="dropdown">
                            {% for stitle, surl in MENUSUBITEMS[title] %}
-                           <li {% if page is defined and surl == page.url %} class="active" {% endif %}>
+                           <li {% if (page is defined and surl == page.url)
+                                      or (output_file == surl) %} class="active" {% endif %}>
                               <a href="{{ SITEURL }}/{{ surl }}">{{ stitle }}</a>
                            </li>
                            {% endfor %}
@@ -54,7 +61,9 @@
                     <li {% if p == page and p != '' %}class="active"{% endif %}><a href="{{ SITEURL }}/{{ p.url }}">{{ p.title }}</a></li>
                 {% endfor %}
                 {% endif %}
+                {% if ARCHIVES_URL %}
                 <li><a href="{{ SITEURL }}/{{ ARCHIVES_URL }}">Archives</a></li>
+                {% endif %}
                 {#{% for cat, null in categories %}
                     <li {% if cat == category %}class="active"{% endif %}><a href="{{ SITEURL }}/{{ cat.url }}">{{ cat }}</a></li>
                 {% endfor %}#}
@@ -65,39 +74,17 @@
         {% endblock %}
 
         <aside id="sidebar">
+        {% include 'widget-social.html'       %}
+        {% include 'widget-blogroll.html'     %}
+        {% include 'widget-sidecategory.html' %}
                 <div class="widget">
-                        <h2>Categories</h2>
+                        <h2>Blog categories</h2>
                         <ul>
                         {% for cat, null in categories %}
                            <li {% if cat == category %}class="active"{% endif %}><a href="{{ SITEURL }}/{{ cat.url }}">{{ cat }}</a></li>
                         {% endfor %}
                         </ul>
                 </div>
-        {% if LINKS %}
-                <div class="widget blogroll">
-                        <h2>Blogroll</h2>
-                        <ul>
-                        {% for name, link in LINKS %}
-                            <li><a href="{{ link }}">{{ name }}</a></li>
-                        {% endfor %}
-                        </ul>
-                </div><!-- /.blogroll -->
-        {% endif %}
-        {% if SOCIAL %}
-                <div class="widget social">
-                        <h2>Social</h2>
-                        <ul>
-                            <li><a href="{{ SITEURL }}/{{ FEED_ALL_ATOM }}" rel="alternate">atom feed</a></li>
-                            {% if FEED_RSS %}
-                            <li><a href="{{ SITEURL }}/{{ FEED_RSS }}" rel="alternate">rss feed</a></li>
-                            {% endif %}
-
-                        {% for name, link in SOCIAL %}
-                            <li><a href="{{ link }}">{{ name }}</a></li>
-                        {% endfor %}
-                        </ul>
-                </div><!-- /.social -->
-        {% endif %}
         </aside><!-- /#sidebar -->
 
         <footer id="footer" class="body">

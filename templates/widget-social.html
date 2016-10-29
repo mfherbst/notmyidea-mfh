@@ -1,0 +1,17 @@
+{% if SOCIAL %}
+	<div class="social">
+		<h2>Social</h2>
+		<ul>
+		    {% if FEED_ALL_ATOM %}
+		    <li><a href="{{ SITEURL }}/{{ FEED_ALL_ATOM }}" rel="alternate">Article atom feed</a></li>
+		    {% endif %}
+		    {% if FEED_RSS %}
+		    <li><a href="{{ SITEURL }}/{{ FEED_RSS }}" rel="alternate">Article rss feed</a></li>
+		    {% endif %}
+
+		{% for name, link in SOCIAL %}
+		    <li><a href="{{ link }}">{{ name }}</a></li>
+		{% endfor %}
+		</ul>
+	</div><!-- /.social -->
+{% endif %}
