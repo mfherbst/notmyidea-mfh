@@ -1,0 +1,20 @@
+{% extends "page.html" %}
+{% block pagecontent %}
+{{ page.content }}
+<table>
+<tr>
+	<th>Time</th>
+	<th></th>
+	<th>Course</th>
+</tr>
+{% for pp in ( PAGES 
+	| selectattr("teaching_date", "defined") 
+	| sort(attribute='date')) %}
+<tr>
+	<td>{{ pp.teaching_date }}</td>
+	<td>{{ pp.teaching_kind }}</td>
+	<td><a href="{{ SITEURL }}/{{ pp.url }}">{{ pp.title }}</a></td>
+</tr>
+{% endfor %}
+</table>
+{% endblock %}

@@ -5,6 +5,8 @@
     <h1 class="entry-title">{{ page.title }}</h1>
     {% if PDF_PROCESSOR %}<a href="{{ SITEURL }}/pdf/{{ page.slug }}.pdf">get
     the pdf</a>{% endif %}
+{% block pagecontent %}
     {{ page.content }}
+{% endblock %}
 </section>
 {% endblock %}
