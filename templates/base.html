@@ -74,17 +74,10 @@
         {% endblock %}
 
         <aside id="sidebar">
-        {% include 'widget-social.html'       %}
-        {% include 'widget-blogroll.html'     %}
-        {% include 'widget-sidecategory.html' %}
-                <div class="widget">
-                        <h2>Blog categories</h2>
-                        <ul>
-                        {% for cat, null in categories %}
-                           <li {% if cat == category %}class="active"{% endif %}><a href="{{ SITEURL }}/{{ cat.url }}">{{ cat }}</a></li>
-                        {% endfor %}
-                        </ul>
-                </div>
+        {% include 'widget-social.html'      %}
+        {% include 'widget-blogroll.html'    %}
+        {% include 'widget-sidedetails.html' %}
+        {% include 'widget-categories.html'  %}
         </aside><!-- /#sidebar -->
 
         <footer id="footer" class="body">
