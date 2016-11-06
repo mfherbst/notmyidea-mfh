@@ -284,6 +284,7 @@ img.left, figure.left {float: right; margin: 0 0 2em 2em;}
 	#banner nav .dropdown li {
 		display:block;
 		width:210px;
+		border-top: 1.5px solid #353232;
 	}
 
 	#banner nav .dropdown li > a {
