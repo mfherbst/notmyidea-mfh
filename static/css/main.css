@@ -390,6 +390,38 @@ img.left, figure.left {float: right; margin: 0 0 2em 2em;}
 		.social a[href*='gitorious.org']:before {content: url('../images/icons/gitorious.png'); margin-right: 2px; vertical-align: -3px;}
 		.social a[href*='github.com']:before {content: url('../images/icons/github.png'); margin-right: 2px; vertical-align: -3px;}
 
+/* Tagcloud */
+ul.tagcloud {
+	list-style: none;
+	padding: 0;
+}
+
+ul.tagcloud li {
+    display: inline-block;
+}
+
+li.tag-1 {
+    font-size: 120%;
+    font-weight: bold;
+}
+
+li.tag-2 {
+    font-size: 100%;
+}
+
+li.tag-3 {
+    font-size: 80%;
+}
+
+li.tag-4 {
+    font-size: 70%;
+}
+
+ul.tagcloud .list-group-item <span>.badge {
+    background-color: grey;
+    color: white;
+}
+
 /*
 	About
 *****************/
