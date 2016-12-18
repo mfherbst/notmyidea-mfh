@@ -1,14 +1,20 @@
 <footer class="post-info">
+        Posted on
         <abbr class="published" title="{{ article.date.isoformat() }}">
-                {{ article.locale_date }}
+            {{ article.locale_date }}
         </abbr>
-
         {% if article.author %}
+        by <a class="url fn" href="{{ SITEURL }}/{{ article.author.url }}">{{ article.author }}</a>
+		<!---
         <address class="vcard author">
                 By <a class="url fn" href="{{ SITEURL }}/{{ article.author.url }}">{{ article.author }}</a>
         </address>
+		-->
         {% endif %}
-<p>In <a href="{{ SITEURL }}/{{ article.category.url }}">{{ article.category }}</a>. {% if PDF_PROCESSOR %}<a href="{{ SITEURL }}/pdf/{{ article.slug }}.pdf">get the pdf</a>{% endif %}</p>
+		in <a href="{{ SITEURL }}/{{ article.category.url }}">{{ article.category }}</a>.
 {% include 'taglist.html' %}
 {% include 'translations.html' %}
+{% if PDF_PROCESSOR %}
+<p><a href="{{ SITEURL }}/pdf/{{ article.slug }}.pdf">Get as pdf</a></p>
+{% endif %}
 </footer><!-- /.post-info -->

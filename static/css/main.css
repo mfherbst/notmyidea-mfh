@@ -12,6 +12,12 @@
 @import url("pygment.css");
 
 /***** Global *****/
+
+/* Html */
+html {
+	text-align: center;
+}
+
 /* Body */
 body {
     background: #F5F4EF;
@@ -19,10 +25,11 @@ body {
     font-size: 87.5%; /* Base font size: 14px */
     font-family: 'Trebuchet MS', Trebuchet, 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
     line-height: 1.429;
-    margin: 0;
+    margin-left:auto;
+    margin-right:auto;
     padding: 0;
     text-align: left;
-    max-width: 1440px;
+    max-width: 1100px;
     min-width: 1000px;
     position: relative;
 }
@@ -88,16 +95,20 @@ ol {
 }
 
 .post-info {
-    float:right;
     margin:10px;
-    padding:5px;
+    padding:10px;
 }
 
 .post-info p{
     margin-bottom: 1px;
 }
 
-.readmore { float: right }
+.readmore {
+	float: right;
+	font-weight:bold;
+	margin-left: 10px;
+	margin-bottom: 10px;
+}
 
 dl {margin: 0 0 1.5em 0;}
 dt {font-weight: bold;}
@@ -142,9 +153,9 @@ aside, nav, article, figure {
 img.right figure.right {float: right; margin: 0 0 2em 2em;}
 img.left, figure.left {float: right; margin: 0 0 2em 2em;}
 
-/*
-	Header
-*****************/
+/****************
+ *    Header    *
+ ****************/
 #banner {
     clear: both;
 	margin: 0 auto 0 auto;
@@ -300,33 +311,34 @@ img.left, figure.left {float: right; margin: 0 0 2em 2em;}
 	}
 
 
-/*
-	Featured
-*****************/
+/**************************
+ *   main page content    *
+ **************************/
 #content {
 	background: #fff;
 	border-radius: 10px;
 	-moz-border-radius: 10px;
 	-webkit-border-radius: 10px;
-    float: left;
-    margin: 1em 10px 2em 7%;
+	float: left;
+	margin: 1em 10px 2em 7%;
 	background: #fff;
 	overflow: hidden;
-	padding: 20px 20px;
-	min-width: 600px;
-	width: 60%;
+	padding: 20px 3.5%;
+	min-width: 500px;
+	width: 55%;
+	font-size: 105%;
 }
 
 /*
 	Extras
 *****************/
 #sidebar {
-    float: right; 
+    float: right;
     margin: 1em 7% 2em 10px;
 	background: #fff;
 	overflow: hidden;
 	padding: 20px 20px;
-	width: 15%;
+	width: 17%;
 	
 	border-radius: 10px;
 	-moz-border-radius: 10px;
@@ -363,32 +375,32 @@ img.left, figure.left {float: right; margin: 0 0 2em 2em;}
 
 #sidebar a:hover, #sidebar a:active {color: #fff;}
 
-	/* Blogroll */
-	#sidebar .blogroll {
-		width: 100%;
-	}
-	
-	#sidebar .blogroll li {float: left; margin: 0 20px 0 0; width: 185px;}
-	
-	
-	.social a {
-		background-repeat: no-repeat;
-		background-position: 3px 6px;
-	}
-	
-		/* Icons */
-		.social a[href*='delicious.com']:before {content: url('../images/icons/delicious.png'); margin-right: 2px; vertical-align: -3px;}
-		.social a[href*='digg.com']:before {content: url('../images/icons/digg.png'); margin-right: 2px; vertical-align: -3px;}
-		.social a[href*='facebook.com']:before {content: url('../images/icons/facebook.png'); margin-right: 2px; vertical-align: -3px;}
-		.social a[href*='atom.xml']:before {content: url('../images/icons/rss.png'); margin-right: 2px; vertical-align: -3px;}
-		.social a[href*='last.fm']:before, .social a[href*='lastfm.']:before {content: url('../images/icons/rss.png'); margin-right: 2px; vertical-align: -3px;}
-		.social a[href*='jamendo.com']:before {content: url('../images/icons/jamendo.png'); margin-right: 2px; vertical-align: -3px;}
-		.social a[href*='stackoverflow.com']:before {content: url('../images/icons/stackoverflow.png'); margin-right: 2px; vertical-align: -3px;}
-		.social a[href*='rss.xml']:before {content: url('../images/icons/rss.png'); margin-right: 2px; vertical-align: -3px;}
-		.social a[href*='twitter.com']:before {content: url('../images/icons/twitter.png'); margin-right: 2px; vertical-align: -3px;}
-		.social a[href*='linkedin.com']:before {content: url('../images/icons/linkedin.png'); margin-right: 2px; vertical-align: -3px;}
-		.social a[href*='gitorious.org']:before {content: url('../images/icons/gitorious.png'); margin-right: 2px; vertical-align: -3px;}
-		.social a[href*='github.com']:before {content: url('../images/icons/github.png'); margin-right: 2px; vertical-align: -3px;}
+/* Blogroll */
+#sidebar .blogroll {
+	width: 100%;
+}
+
+#sidebar .blogroll li {float: left; margin: 0 20px 0 0; width: 185px;}
+
+
+.social a {
+	background-repeat: no-repeat;
+	background-position: 3px 6px;
+}
+
+	/* Icons */
+	.social a[href*='delicious.com']:before {content: url('../images/icons/delicious.png'); margin-right: 2px; vertical-align: -3px;}
+	.social a[href*='digg.com']:before {content: url('../images/icons/digg.png'); margin-right: 2px; vertical-align: -3px;}
+	.social a[href*='facebook.com']:before {content: url('../images/icons/facebook.png'); margin-right: 2px; vertical-align: -3px;}
+	.social a[href*='atom.xml']:before {content: url('../images/icons/rss.png'); margin-right: 2px; vertical-align: -3px;}
+	.social a[href*='last.fm']:before, .social a[href*='lastfm.']:before {content: url('../images/icons/rss.png'); margin-right: 2px; vertical-align: -3px;}
+	.social a[href*='jamendo.com']:before {content: url('../images/icons/jamendo.png'); margin-right: 2px; vertical-align: -3px;}
+	.social a[href*='stackoverflow.com']:before {content: url('../images/icons/stackoverflow.png'); margin-right: 2px; vertical-align: -3px;}
+	.social a[href*='rss.xml']:before {content: url('../images/icons/rss.png'); margin-right: 2px; vertical-align: -3px;}
+	.social a[href*='twitter.com']:before {content: url('../images/icons/twitter.png'); margin-right: 2px; vertical-align: -3px;}
+	.social a[href*='linkedin.com']:before {content: url('../images/icons/linkedin.png'); margin-right: 2px; vertical-align: -3px;}
+	.social a[href*='gitorious.org']:before {content: url('../images/icons/gitorious.png'); margin-right: 2px; vertical-align: -3px;}
+	.social a[href*='github.com']:before {content: url('../images/icons/github.png'); margin-right: 2px; vertical-align: -3px;}
 
 /* Tagcloud */
 ul.tagcloud {
@@ -422,9 +434,9 @@ ul.tagcloud .list-group-item <span>.badge {
     color: white;
 }
 
-/*
-	About
-*****************/
+/****************
+ *    About     *
+ ****************/
 #about {
 	background: #fff;
 	font-style: normal;
@@ -447,9 +459,9 @@ ul.tagcloud .list-group-item <span>.badge {
 
 #about .bio {float: right; width: 500px;}
 
-/*
-	Footer
-*****************/
+/****************
+ *    Footer    *
+ ****************/
 #footer {
     padding-bottom: 2em; 
     text-align: center; 
@@ -467,7 +479,7 @@ ul.tagcloud .list-group-item <span>.badge {
 li:last-child .hentry, #content > .hentry {border: 0; margin: 0;}
 #content > .hentry {padding: 1em 0;}
 .hentry img{display : none ;}
-.entry-title {font-size: 3em; margin-bottom: 10px; margin-top: 0;}
+.entry-title {font-size: 3em; margin-bottom: 25px; margin-top: 0;}
 .entry-title a:link, .entry-title a:visited {text-decoration: none; color: #333;}
 .entry-title a:visited {background-color: #fff;}
 
@@ -475,6 +487,7 @@ li:last-child .hentry, #content > .hentry {border: 0; margin: 0;}
 
 	/* Content */
 	.hentry footer {margin-bottom: 2em;}
+
 	.hentry footer address {display: inline;}
 	#posts-list footer address {display: block;}
 
@@ -483,11 +496,7 @@ li:last-child .hentry, #content > .hentry {border: 0; margin: 0;}
 	#posts-list .hentry {padding-left: 10px; position: relative;}
 	
 	#posts-list footer {
-		left: 10px;
-		position: relative;
-        float: left;
-		top: 0.5em;
-		width: 190px;
+		width: 85%;
 	}
 	
 	/* About the Author */
