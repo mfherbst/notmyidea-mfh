@@ -2,11 +2,13 @@
 {% block pagecontent %}
 {{ page.content }}
 <table>
+<thead>
 <tr>
 	<th>Time</th>
 	<th></th>
 	<th>Course</th>
 </tr>
+</thead>
 {% for pp in ( PAGES 
 	| selectattr("teaching_date", "defined") 
 	| sort(attribute='date')) %}
