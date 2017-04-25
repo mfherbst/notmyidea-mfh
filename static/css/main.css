@@ -169,7 +169,7 @@ img.left, figure.left {float: right; margin: 0 0 2em 2em;}
  *    Header    *
  ****************/
 #banner {
-    clear: both;
+	clear: both;
 	margin: 0 auto 0 auto;
 	padding: 2.5em 0 0 0;
 }
@@ -345,8 +345,8 @@ img.left, figure.left {float: right; margin: 0 0 2em 2em;}
 	Extras
 *****************/
 #sidebar {
-    float: right;
-    margin: 1em 7% 2em 10px;
+	float: right;
+	margin: 1em 7% 2em 10px;
 	background: #fff;
 	overflow: hidden;
 	padding: 20px 20px;
@@ -391,9 +391,6 @@ img.left, figure.left {float: right; margin: 0 0 2em 2em;}
 #sidebar .blogroll {
 	width: 100%;
 }
-
-#sidebar .blogroll li {float: left; margin: 0 20px 0 0; width: 185px;}
-
 
 .social a {
 	background-repeat: no-repeat;
@@ -492,8 +489,17 @@ li:last-child .hentry, #content > .hentry {border: 0; margin: 0;}
 #content > .hentry {padding: 1em 0;}
 .hentry img{display : none ;}
 .entry-title {font-size: 2.8em; margin-bottom: 25px; margin-top: 0;}
-.entry-title a:link, .entry-title a:visited {text-decoration: none; color: #333;}
+.entry-title a:link, .entry-title a:visited { text-decoration:none; color: #000305 }
 .entry-title a:visited {background-color: #fff;}
+.entry-title a:hover, .entry-title a:active { color: #C74350; text-shadow: none; }
+
+#older-articles {
+	padding-left:10px;
+	font-size: 2.4em;
+	margin-bottom:2px;
+	margin-top: 30px;
+	color: #555;
+}
 
 .hentry .post-info * {font-style: normal;}
 

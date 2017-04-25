@@ -3,7 +3,7 @@
         <abbr class="published" title="{{ article.date.isoformat() }}">
             {{ article.locale_date }}
         </abbr>
-        {% if article.author %}
+        {% if article.author and not HIDE_AUTHOR %}
         by <a class="url fn" href="{{ SITEURL }}/{{ article.author.url }}">{{ article.author }}</a>
 		<!---
         <address class="vcard author">
