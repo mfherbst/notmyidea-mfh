@@ -5,7 +5,7 @@
 	<h2>{{ elem.label }}</h2>
 	<ul>
 	{% if typestr == 'page' %}
-		{% set pages = (PAGES
+		{% set pages = (pages
 				| selectattr(elem.filter.0, "equalto", elem.filter.1)
 				| sort(attribute=(elem.sortkey | default('date')))
 				)[-(elem.max|default(100)):] %}

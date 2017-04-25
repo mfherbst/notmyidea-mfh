@@ -9,8 +9,8 @@
 	<th>Course</th>
 </tr>
 </thead>
-{% for pp in ( PAGES 
-	| selectattr("teaching_date", "defined") 
+{% for pp in ( pages
+	| selectattr("teaching_date", "defined")
 	| sort(attribute='date')) %}
 <tr>
 	<td>{{ pp.teaching_date }}</td>
