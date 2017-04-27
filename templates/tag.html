@@ -1,2 +1,4 @@
 {% extends "index.html" %}
-{% block title %}{{ SITENAME }} - {{ tag }}{% endblock %}
+{% block title %}
+{% if BLOGTITLE %}{{ BLOGTITLE }}{% else %}{{ SITENAME }}{% endif %} - {{ tag }}
+{%endblock%}
