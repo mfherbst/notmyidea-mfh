@@ -42,7 +42,7 @@ h2 {font-size: 1.571em}	/* 22px */
 h3 {font-size: 1.429em}	/* 20px */
 h4 {font-size: 1.286em}	/* 18px */
 h5 {font-size: 1.143em}	/* 16px */
-h6 {font-size: 1em}		/* 14px */
+h6 {font-size: 1em}	/* 14px */
 
 h1, h2, h3, h4, h5, h6 {
 	font-weight: 400;
@@ -59,15 +59,15 @@ hr { border: 2px solid #EEEEEE; }
 a {outline: 0;}
 a img {border: 0px; text-decoration: none;}
 a:link, a:visited {
-	color: #C74350;
+	color: #9d1f1f;
 	padding: 0 1px;
-	text-decoration: underline;
+	text-decoration: none;
 }
 a:hover, a:active, a.active, .active>a {
-	background-color: #C74350;
-	color: white;
-	text-decoration: none;
-	text-shadow: 1px 1px 1px #333;
+	/*background-color: #9d1f1f;*/
+	color: #2121bf;
+	text-decoration: underline;
+	/*text-shadow: 1px 1px 1px #333;*/
 }
 
 h1 a:hover {
@@ -213,7 +213,7 @@ img.left, figure.left {float: right; margin: 0 0 2em 2em;}
 	}
 	#banner h1 a:hover, #banner h1 a:active {
 		background: none;
-		color: #C74350;
+		color: #c74350;
 		text-shadow: none;
 	}
 	
@@ -273,7 +273,7 @@ img.left, figure.left {float: right; margin: 0 0 2em 2em;}
 
 	#banner nav li > a:hover, #banner nav li > a:active, 
 	#banner nav .active > a:link, #banner nav .active > a:visited {
-		background: #C74451;
+		background: #9d0d0d; /*C74451;*/
 		color: #fff;
 		text-shadow: none !important;
 	}
@@ -316,12 +316,14 @@ img.left, figure.left {float: right; margin: 0 0 2em 2em;}
 		padding: 4px 1.0em;
 	}
 
+	/*
 	#banner nav .dropdown li > a:hover,
 	#banner nav .dropdown li > a:active,
 	#banner nav .dropdown .active > a:link,
 	#banner nav .dropdown .active > a:visited {
 		background: #b73441;
 	}
+	*/
 
 
 /**************************
@@ -362,7 +364,7 @@ img.left, figure.left {float: right; margin: 0 0 2em 2em;}
 #sidebar li {border-bottom: 1px solid #fff;}
 
 #sidebar h2 {
-	color: #C74350;
+	color: #9d1f1f;
 	font-size: 1.429em;
 	margin-top: .75em;
 	margin-bottom: .25em;
@@ -386,7 +388,11 @@ img.left, figure.left {float: right; margin: 0 0 2em 2em;}
 #sidebar .blogroll li:nth-last-child(2) a,
 #sidebar .blogroll li:nth-last-child(3) a {border: 0;}
 
-#sidebar a:hover, #sidebar a:active {color: #fff;}
+#sidebar a:hover, #sidebar a:active {
+	color: #fff;
+	background-color: #bd2b2b;
+	text-decoration:none
+}
 
 /* Blogroll */
 #sidebar .blogroll {
@@ -492,7 +498,7 @@ li:last-child .hentry, #content > .hentry {border: 0; margin: 0;}
 .entry-title {font-size: 2.8em; margin-bottom: 25px; margin-top: 0;}
 .entry-title a:link, .entry-title a:visited { text-decoration:none; color: #000305 }
 .entry-title a:visited {background-color: #fff;}
-.entry-title a:hover, .entry-title a:active { color: #C74350; text-shadow: none; }
+.entry-title a:hover, .entry-title a:active { color: #9d1f1f; text-shadow: none; }
 
 #older-articles {
 	padding-left:10px;
@@ -501,6 +507,9 @@ li:last-child .hentry, #content > .hentry {border: 0; margin: 0;}
 	margin-top: 30px;
 	color: #555;
 }
+
+.hentry header a:link, .hentry header a:visited {text-decoration:none; color: #000305 }
+.hentry header a:hover, .hentry header a:active { color: #9d1f1f;  }
 
 .hentry .post-info * {font-style: normal;}
 
