@@ -5,11 +5,6 @@
         </abbr>
         {% if article.author and not HIDE_AUTHOR %}
         by <a class="url fn" href="{{ SITEURL }}/{{ article.author.url }}">{{ article.author }}</a>
-		<!---
-        <address class="vcard author">
-                By <a class="url fn" href="{{ SITEURL }}/{{ article.author.url }}">{{ article.author }}</a>
-        </address>
-		-->
         {% endif %}
 		in <a href="{{ SITEURL }}/{{ article.category.url }}">{{ article.category }}</a>.
 {% include 'taglist.html' %}
