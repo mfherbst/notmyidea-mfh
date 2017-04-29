@@ -420,7 +420,6 @@ ul.tagcloud li {
 
 li.tag-1 {
     font-size: 120%;
-    font-weight: bold;
 }
 
 li.tag-2 {
@@ -428,11 +427,11 @@ li.tag-2 {
 }
 
 li.tag-3 {
-    font-size: 80%;
+    font-size: 90%;
 }
 
 li.tag-4 {
-    font-size: 70%;
+    font-size: 75%;
 }
 
 ul.tagcloud .list-group-item <span>.badge {
