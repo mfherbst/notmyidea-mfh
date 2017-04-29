@@ -47,13 +47,13 @@ hr { border: 2px solid #EEEEEE; }
 a {outline: 0;}
 a img {border: 0px; text-decoration: none;}
 a:link, a:visited {
-	color: #9d1f1f;
-	padding: 0 1px;
-	text-decoration: none;
+    color: #9d1f1f;
+    padding: 0 1px;
+    text-decoration: none;
 }
 a:hover, a:active, a.active, .active>a {
-	color: #1a4699;
-	text-decoration: underline;
+    color: #1a4699;
+    text-decoration: underline;
 }
 
 h1 a:hover {
@@ -71,13 +71,13 @@ em, i {font-style: italic;}
 
 /* Lists */
 ul {
-	list-style: outside disc;
-	margin: 1em 0 1.5em 1.5em;
+    list-style: outside disc;
+    margin: 1em 0 1.5em 1.5em;
 }
 
 ol {
-	list-style: outside decimal;
-	margin: 1em 0 1.5em 1.5em;
+    list-style: outside decimal;
+    margin: 1em 0 1.5em 1.5em;
 }
 
 .post-info {
@@ -90,10 +90,10 @@ ol {
 }
 
 .readmore {
-	float: right;
-	font-weight:bold;
-	margin-left: 10px;
-	margin-bottom: 10px;
+    float: right;
+    font-weight:bold;
+    margin-left: 10px;
+    margin-bottom: 10px;
 }
 
 dl {margin: 0 0 1.5em 0;}
@@ -101,12 +101,12 @@ dt {font-weight: bold;}
 dd {margin-left: 1.5em;}
 
 pre {
-	background-color: #f0f0ed;
-	padding: 10px;
-	color: #000;
-	margin: 10px;
-	overflow: auto;
-	font-size:110%;
+    background-color: #f0f0ed;
+    padding: 10px;
+    color: #000;
+    margin: 10px;
+    overflow: auto;
+    font-size:110%;
 }
 code { font-size: 110%; }
 
@@ -123,18 +123,18 @@ table {margin: .5em auto 1.5em auto; width: 98%;}
 
 /* Thead */
 thead th {
-	padding: .55em .4em .3em .4em;
-	text-align: left;
-	border-bottom: thin solid #ccc;
+    padding: .55em .4em .3em .4em;
+    text-align: left;
+    border-bottom: thin solid #ccc;
 
-	text-transform: uppercase;
-	font-size: 85%;
-	font-weight:normal;
-	letter-spacing: 0.03em;
-	color: #707070;
+    text-transform: uppercase;
+    font-size: 85%;
+    font-weight:normal;
+    letter-spacing: 0.03em;
+    color: #707070;
 }
 thead td {
-	border-bottom: thin solid #ccc;
+    border-bottom: thin solid #ccc;
 }
 
 /* Tbody */
@@ -151,7 +151,7 @@ tfoot td {}
 /* HTML5 tags */
 header, section, footer,
 aside, nav, article, figure {
-	display: block;
+    display: block;
 }
 
 /***** Layout *****/
@@ -162,151 +162,151 @@ img.left, figure.left {float: right; margin: 0 0 2em 2em;}
  *    Header    *
  ****************/
 #banner {
-	clear: both;
-	margin: 0 auto 0 auto;
-	padding: 2.5em 0 0 0;
+    clear: both;
+    margin: 0 auto 0 auto;
+    padding: 2.5em 0 0 0;
 }
 
 /* Title */
 #banner a:link, #banner a:visited, #banner a:hover, #banner a:active {
-	display: block;
-	margin: 0 auto 0 auto;
-	text-decoration: none;
-	background: none;
-	padding: 0;
+    display: block;
+    margin: 0 auto 0 auto;
+    text-decoration: none;
+    background: none;
+    padding: 0;
 }
 
 #banner a img {
-	width:  90%;
-	margin: 0 auto 0 auto;
-	display:block;
+    width:  90%;
+    margin: 0 auto 0 auto;
+    display:block;
 
-	border-top-left-radius: 8px;
-	-moz-border-top-left-radius: 8px;
-	-webkit-border-top-left-radius: 8px;
+    border-top-left-radius: 8px;
+    -moz-border-top-left-radius: 8px;
+    -webkit-border-top-left-radius: 8px;
 
-	border-top-right-radius: 8px;
-	-moz-border-top-right-radius: 8px;
-	-webkit-border-top-right-radius: 8px;
+    border-top-right-radius: 8px;
+    -moz-border-top-right-radius: 8px;
+    -webkit-border-top-right-radius: 8px;
 }
 
 #banner h1 {
-	font-size: 3.571em; 
-	line-height: 0;
-	margin: 0 auto 0 auto;
+    font-size: 3.571em;
+    line-height: 0;
+    margin: 0 auto 0 auto;
 }
 
 #banner h1 a:link, #banner h1 a:visited {
-	color: #000305;
-	display: block;
-	font-weight: bold;
-	margin: 0 auto .6em auto;
-	text-decoration: none;
-	width: 90%;
+    color: #000305;
+    display: block;
+    font-weight: bold;
+    margin: 0 auto .6em auto;
+    text-decoration: none;
+    width: 90%;
 }
 #banner h1 a:hover, #banner h1 a:active {
-	background: none;
-	color: #c74350;
-	text-shadow: none;
+    background: none;
+    color: #c74350;
+    text-shadow: none;
 }
 
 #banner h1 strong {font-size: 0.36em; font-weight: normal;}
 
 /* Main Nav */
 #banner nav {
-	background: #000305;
-	font-size: 1.143em;
-	height: 40px;
-	line-height: 30px;
-	margin: 0 auto 2em auto;
-	padding: 0;
-	width: 90%;
+    background: #000305;
+    font-size: 1.143em;
+    height: 40px;
+    line-height: 30px;
+    margin: 0 auto 0 auto;
+    padding: 0;
+    width: 90%;
 
-	border-bottom-left-radius: 8px;
-	-moz-border-bottom-left-radius: 8px;
-	-webkit-border-bottom-left-radius: 8px;
+    border-bottom-left-radius: 8px;
+    -moz-border-bottom-left-radius: 8px;
+    -webkit-border-bottom-left-radius: 8px;
 
-	border-bottom-right-radius: 8px;
-	-moz-border-bottom-right-radius: 8px;
-	-webkit-border-bottom-right-radius: 8px;
+    border-bottom-right-radius: 8px;
+    -moz-border-bottom-right-radius: 8px;
+    -webkit-border-bottom-right-radius: 8px;
 }
 
 #banner nav.bothround {
-	border-top-left-radius: 8px;
-	-moz-border-top-left-radius: 8px;
-	-webkit-border-top-left-radius: 8px;
+    border-top-left-radius: 8px;
+    -moz-border-top-left-radius: 8px;
+    -webkit-border-top-left-radius: 8px;
 
-	border-top-right-radius: 8px;
-	-moz-border-top-right-radius: 8px;
-	-webkit-border-top-right-radius: 8px;
+    border-top-right-radius: 8px;
+    -moz-border-top-right-radius: 8px;
+    -webkit-border-top-right-radius: 8px;
 }
 
 #banner nav ul {
-	list-style: none;
-	margin: 0 auto;
+    list-style: none;
+    margin: 0 auto;
 }
 
 #banner nav > ul > li {
-	float: left;
-	display: inline;
-	margin: 0;
-	position:relative;
+    float: left;
+    display: inline;
+    margin: 0;
+    position:relative;
 }
 
 #banner nav > ul > li > a {
-	height: 30px;
-	display: inline-block;
+    height: 30px;
+    display: inline-block;
 }
 
 #banner nav li > a:link, #banner nav li > a:visited {
-	color: #fff;
-	padding: 5px 1.5em;
-	text-decoration: none;
+    color: #fff;
+    padding: 5px 1.5em;
+    text-decoration: none;
 }
 
-#banner nav li > a:hover, #banner nav li > a:active, 
+#banner nav li > a:hover, #banner nav li > a:active,
 #banner nav .active > a:link, #banner nav .active > a:visited {
-	background: #9d0d0d; /*C74451;*/
-	color: #fff;
-	text-shadow: none !important;
+    background: #9d0d0d;
+    color: #fff;
+    text-shadow: none !important;
 }
 
 #banner nav > ul > li:first-child a {
-	border-top-left-radius: 8px;
-	-moz-border-radius-topleft: 8px;
-	-webkit-border-top-left-radius: 8px;
+    border-top-left-radius: 8px;
+    -moz-border-radius-topleft: 8px;
+    -webkit-border-top-left-radius: 8px;
 
-	border-bottom-left-radius: 8px;
-	-moz-border-radius-bottomleft: 8px;
-	-webkit-border-bottom-left-radius: 8px;
+    border-bottom-left-radius: 8px;
+    -moz-border-radius-bottomleft: 8px;
+    -webkit-border-bottom-left-radius: 8px;
 }
 
 #banner nav li:hover .dropdown {
-	z-index:1;
-	opacity:1;
+    z-index:1;
+    opacity:1;
 }
 
 #banner nav .dropdown {
-	position:absolute;
-	top:100%;
-	left:0px;
-	z-index:-1;
-	opacity:0;
-	transition:opacity linear 0.15s;
-	box-shadow:0px 2px 3px rgba(0,0,0,0.2);
-	background:#2e2728;
-	font-size: 0.93em;
+    position:absolute;
+    top:100%;
+    left:0px;
+    z-index:-1;
+    opacity:0;
+    transition:opacity linear 0.15s;
+    box-shadow:0px 2px 3px rgba(0,0,0,0.2);
+    background:#2e2728;
+    font-size: 0.93em;
 }
 
 #banner nav .dropdown li {
-	display:block;
-	width:210px;
-	border-top: 1.5px solid #353232;
+    display:block;
+    width:210px;
+    border-top: 1.5px solid #353232;
 }
 
 #banner nav .dropdown li > a {
-	display:block;
-	padding: 4px 1.0em;
+    display:block;
+    padding: 4px 1.0em;
 }
 
 
@@ -348,19 +348,19 @@ img.left, figure.left {float: right; margin: 0 0 2em 2em;}
 #sidebar li {border-bottom: 1px solid #fff;}
 
 #sidebar h2 {
-	color: #9d1f1f;
-	font-size: 1.429em;
-	margin-top: .75em;
-	margin-bottom: .25em;
-	padding: 0 3px;
+    color: #9d1f1f;
+    font-size: 1.429em;
+    margin-top: .75em;
+    margin-bottom: .25em;
+    padding: 0 3px;
 }
 
 #sidebar a:link, #sidebar a {
-	color: #444;
-	display: block;
-	border-bottom: 1px solid #F4E3E3;
-	text-decoration: none;
-	padding: .3em .25em;
+    color: #444;
+    display: block;
+    border-bottom: 1px solid #F4E3E3;
+    text-decoration: none;
+    padding: .3em .25em;
 }
 
 #sidebar a:hover, #sidebar a:active {
@@ -381,13 +381,13 @@ img.left, figure.left {float: right; margin: 0 0 2em 2em;}
 
 /* Blogroll */
 #sidebar .blogroll {
-	width: 100%;
+    width: 100%;
 }
 
 /* Social */
 .social a {
-	background-repeat: no-repeat;
-	background-position: 3px 6px;
+    background-repeat: no-repeat;
+    background-position: 3px 6px;
 }
 
 /* Social icons */
@@ -406,8 +406,8 @@ img.left, figure.left {float: right; margin: 0 0 2em 2em;}
 
 /* Tagcloud */
 ul.tagcloud {
-	list-style: none;
-	padding: 0;
+    list-style: none;
+    padding: 0;
 }
 
 ul.tagcloud li {
@@ -451,24 +451,24 @@ ul.tagcloud .list-group-item <span>.badge {
  *    About     *
  ****************/
 #about {
-	background: #fff;
-	font-style: normal;
-	margin-bottom: 2em;
-	overflow: hidden;
-	padding: 20px;
-	text-align: left;
+    background: #fff;
+    font-style: normal;
+    margin-bottom: 2em;
+    overflow: hidden;
+    padding: 20px;
+    text-align: left;
 
-	border-radius: 8px;
-	-moz-border-radius: 8px;
-	-webkit-border-radius: 8px;
+    border-radius: 8px;
+    -moz-border-radius: 8px;
+    -webkit-border-radius: 8px;
 }
 
 /*
  * Blog categories or index
  */
 .hentry {
-	border-bottom: 1px solid #eee;
-	padding: 1.5em 0;
+    border-bottom: 1px solid #eee;
+    padding: 1.5em 0;
 }
 li:last-child .hentry, #content > .hentry {border: 0; margin: 0;}
 #content > .hentry {padding: 1em 0;}
@@ -482,8 +482,8 @@ li:last-child .hentry, #content > .hentry {border: 0; margin: 0;}
 
 /* Separator between featured and further articles list */
 .featured-separator {
-	border: 3px solid #EEEEEE;
-	margin-top: 4em;
+    border: 3px solid #EEEEEE;
+    margin-top: 4em;
 }
 
 /** Further entries */
@@ -504,6 +504,4 @@ li:last-child .hentry, #content > .hentry {border: 0; margin: 0;}
 #posts-list {list-style: none; margin: 0;}
 #posts-list .hentry {padding-left: 10px; position: relative;}
 
-#posts-list footer {
-	width: 85%;
-}
+#posts-list footer { width: 85%; }
