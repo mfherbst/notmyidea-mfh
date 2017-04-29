@@ -56,10 +56,6 @@ a:hover, a:active, a.active, .active>a {
     text-decoration: underline;
 }
 
-h1 a:hover {
-    background-color: inherit
-}
-
 /* Paragraphs */
 p {margin-bottom: 1.143em;}
 
@@ -167,11 +163,10 @@ img.left, figure.left {float: right; margin: 0 0 2em 2em;}
     padding: 2.5em 0 0 0;
 }
 
-/* Title */
+/* Title line */
 #banner a:link, #banner a:visited, #banner a:hover, #banner a:active {
     display: block;
     margin: 0 auto 0 auto;
-    text-decoration: none;
     background: none;
     padding: 0;
 }
@@ -206,8 +201,7 @@ img.left, figure.left {float: right; margin: 0 0 2em 2em;}
 }
 #banner h1 a:hover, #banner h1 a:active {
     background: none;
-    color: #c74350;
-    text-shadow: none;
+    color: #9d1f1f;
 }
 
 #banner h1 strong {font-size: 0.36em; font-weight: normal;}
@@ -268,7 +262,6 @@ img.left, figure.left {float: right; margin: 0 0 2em 2em;}
 #banner nav .active > a:link, #banner nav .active > a:visited {
     background: #9d0d0d;
     color: #fff;
-    text-shadow: none !important;
 }
 
 #banner nav > ul > li:first-child a {
@@ -378,12 +371,12 @@ img.left, figure.left {float: right; margin: 0 0 2em 2em;}
 #sidebar li:last-child,
 #sidebar li:last-child a {border: 0}
 
+/* Blogroll */
 #sidebar .blogroll li:nth-last-child(2),
 #sidebar .blogroll li:nth-last-child(3),
 #sidebar .blogroll li:nth-last-child(2) a,
 #sidebar .blogroll li:nth-last-child(3) a {border: 0;}
 
-/* Blogroll */
 #sidebar .blogroll {
     width: 100%;
 }
@@ -394,19 +387,11 @@ img.left, figure.left {float: right; margin: 0 0 2em 2em;}
     background-position: 3px 6px;
 }
 
-/* Social icons */
-.social a[href*='delicious.com']:before {content: url('../images/icons/delicious.png'); margin-right: 2px; vertical-align: -3px;}
-.social a[href*='digg.com']:before {content: url('../images/icons/digg.png'); margin-right: 2px; vertical-align: -3px;}
-.social a[href*='facebook.com']:before {content: url('../images/icons/facebook.png'); margin-right: 2px; vertical-align: -3px;}
 .social a[href*='atom.xml']:before {content: url('../images/icons/rss.png'); margin-right: 2px; vertical-align: -3px;}
-.social a[href*='last.fm']:before, .social a[href*='lastfm.']:before {content: url('../images/icons/rss.png'); margin-right: 2px; vertical-align: -3px;}
-.social a[href*='jamendo.com']:before {content: url('../images/icons/jamendo.png'); margin-right: 2px; vertical-align: -3px;}
-.social a[href*='stackoverflow.com']:before {content: url('../images/icons/stackoverflow.png'); margin-right: 2px; vertical-align: -3px;}
 .social a[href*='rss.xml']:before {content: url('../images/icons/rss.png'); margin-right: 2px; vertical-align: -3px;}
-.social a[href*='twitter.com']:before {content: url('../images/icons/twitter.png'); margin-right: 2px; vertical-align: -3px;}
-.social a[href*='linkedin.com']:before {content: url('../images/icons/linkedin.png'); margin-right: 2px; vertical-align: -3px;}
-.social a[href*='gitorious.org']:before {content: url('../images/icons/gitorious.png'); margin-right: 2px; vertical-align: -3px;}
+.social a[href*='stackoverflow.com']:before {content: url('../images/icons/stackoverflow.png'); margin-right: 2px; vertical-align: -3px;}
 .social a[href*='github.com']:before {content: url('../images/icons/github.png'); margin-right: 2px; vertical-align: -3px;}
+.social a[href*='gitlab.com']:before {content: url('../images/icons/gitlab.png'); margin-right: 2px; vertical-align: -3px;}
 
 /* Tagcloud */
 ul.tagcloud {
@@ -443,7 +428,6 @@ ul.tagcloud .list-group-item <span>.badge {
  *    Footer    *
  ****************/
 #footer {
-    padding-bottom: 2em;
     text-align: center;
     clear: both;
     width: 90%;
@@ -480,8 +464,7 @@ li:last-child .hentry, #content > .hentry {border: 0; margin: 0;}
 /* Featured article or title of article */
 .entry-title {font-size: 2.7em; margin-top: 0; margin-bottom: .7em }
 .entry-title a:link, .entry-title a:visited { text-decoration:none; color: #000305 }
-.entry-title a:visited {background-color: #fff;}
-.entry-title a:hover, .entry-title a:active { color: #9d1f1f; text-shadow: none; }
+.entry-title a:hover, .entry-title a:active { color: #9d1f1f; }
 
 /* Separator between featured and further articles list */
 .featured-separator {
@@ -491,7 +474,7 @@ li:last-child .hentry, #content > .hentry {border: 0; margin: 0;}
 
 /** Further entries */
 .hentry header a:link, .hentry header a:visited {text-decoration:none; color: #000305 }
-.hentry header a:hover, .hentry header a:active { color: #9d1f1f; text-shadow:none; }
+.hentry header a:hover, .hentry header a:active { color: #9d1f1f }
 .hentry header h1 { font-size: 2.1em; margin-top: 0;}
 
 /** Post info and content footer */
