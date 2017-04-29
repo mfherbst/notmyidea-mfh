@@ -69,8 +69,8 @@ p {margin-bottom: 1.143em;}
 strong, b {font-weight: bold;}
 em, i {font-style: italic;}
 
-::-moz-selection {background: #F6CF74; color: #fff;}
-::selection {background: #F6CF74; color: #fff;}
+::-moz-selection {background: #8a8a99; color: #fff; }
+::selection {background: #8a8a99; color: #fff; }
 
 /* Lists */
 ul {
@@ -272,7 +272,7 @@ img.left, figure.left {float: right; margin: 0 0 2em 2em;}
 	border-top-left-radius: 5px;
 	-moz-border-radius-topleft: 5px;
 	-webkit-border-top-left-radius: 5px;
-	
+
 	border-bottom-left-radius: 5px;
 	-moz-border-radius-bottomleft: 5px;
 	-webkit-border-bottom-left-radius: 5px;
