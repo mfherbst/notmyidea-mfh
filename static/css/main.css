@@ -441,6 +441,17 @@ ul.tagcloud .list-group-item <span>.badge {
 }
 
 /****************
+ *    Footer    *
+ ****************/
+#footer {
+    padding-bottom: 2em;
+    text-align: center;
+    clear: both;
+    width: 90%;
+    margin: 20px auto;
+}
+
+/****************
  *    About     *
  ****************/
 #about {
@@ -450,22 +461,10 @@ ul.tagcloud .list-group-item <span>.badge {
 	overflow: hidden;
 	padding: 20px;
 	text-align: left;
-	width: 760px;
-	
+
 	border-radius: 10px;
 	-moz-border-radius: 10px;
 	-webkit-border-radius: 10px;
-}
-
-/****************
- *    Footer    *
- ****************/
-#footer {
-    padding-bottom: 2em; 
-    text-align: center; 
-    clear: both; 
-    width: 80%;
-    margin: 20px auto;
 }
 
 /*
