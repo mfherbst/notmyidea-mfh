@@ -6,7 +6,7 @@
 
 /* Html */
 html {
-	text-align: center;
+    text-align: center;
 }
 
 /* Body */
@@ -479,7 +479,7 @@ li:last-child .hentry, #content > .hentry {border: 0; margin: 0;}
 .hentry img{display : none ;}
 
 /* Featured article or title of article */
-.entry-title {font-size: 2.8em; margin-bottom: 25px; margin-top: 0;}
+.entry-title {font-size: 2.7em; margin-bottom: 25px; margin-top: 0;}
 .entry-title a:link, .entry-title a:visited { text-decoration:none; color: #000305 }
 .entry-title a:visited {background-color: #fff;}
 .entry-title a:hover, .entry-title a:active { color: #9d1f1f; text-shadow: none; }
@@ -493,7 +493,7 @@ li:last-child .hentry, #content > .hentry {border: 0; margin: 0;}
 /** Further entries */
 .hentry header a:link, .hentry header a:visited {text-decoration:none; color: #000305 }
 .hentry header a:hover, .hentry header a:active { color: #9d1f1f; text-shadow:none; }
-.hentry header h1 { font-size: 2.2em; }
+.hentry header h1 { font-size: 2.1em; margin-top: 0;}
 
 
 /** TODO These and below I have no clue what they do */
