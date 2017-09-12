@@ -157,6 +157,9 @@ img.left, figure.left {float: right; margin: 0 0 2em 2em;}
 /****************
  *    Header    *
  ****************/
+img.githubLeft {position: absolute; top: 0; right: 0; border: 0; }
+img.githubRight {position: absolute; top: 0; left: 0; border: 0; }
+
 #banner {
     clear: both;
     margin: 0 auto 0 auto;
