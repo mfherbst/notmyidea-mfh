@@ -437,6 +437,10 @@ ul.tagcloud .list-group-item <span>.badge {
     margin: 20px auto;
 }
 
+span.footerbox {
+    width: 50px;
+}
+
 /****************
  *    About     *
  ****************/
