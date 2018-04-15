@@ -11,7 +11,9 @@
 		</h1> {% include 'twitter.html' %}
 	</header>
 	<div class="entry-content">
+		{% block article_payload %}
 		{{ article.content }}
+		{% endblock %}
 		{% include 'article_infos.html' %}
 	</div>
 	{% if DISQUS_SITENAME %}
