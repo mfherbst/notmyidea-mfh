@@ -1,0 +1,35 @@
+{% extends "page.html" %}
+{% block pagecontent %}
+{{ page.content }}
+
+{# Do all the other publications first #}
+{% for kind, list in ( articles
+	| selectattr("pubauthors", "defined")
+	| groupby("pubkind")) %}
+<table>
+<thead>
+<tr>
+	<th>{{ kind }}</th>
+</tr>
+</thead>
+{% for article in list | sort(attribute='pubdate', reverse=True) %}
+{% include 'publication_infos.html' %}
+{% endfor %}
+</table>
+{% endfor %}
+
+{# Do all the lecture notes #}
+<table>
+<thead>
+<tr>
+	<th>Lecture notes</th>
+</tr>
+</thead>
+{% for article in ( pages
+	| selectattr("pubauthors", "defined")
+	| sort(attribute='pubdate', reverse=True)) %}
+{% include 'publication_infos.html' %}
+{% endfor %}
+</table>
+
+{% endblock %}

@@ -11,7 +11,7 @@
 </thead>
 {% for pp in ( pages
 	| selectattr("teaching_date", "defined")
-	| sort(attribute='date')) %}
+	| sort(attribute='date', reverse=True)) %}
 <tr>
 	<td>{{ pp.teaching_date }}</td>
 	<td>{{ pp.teaching_kind }}</td>
