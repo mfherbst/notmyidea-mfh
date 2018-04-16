@@ -1,0 +1,10 @@
+{% extends "article.html" %}
+{% block article_payload %}
+{{ article.content }}
+<table>
+<thead>
+<tr><th>{{article.pubkind | default("article") | capitalize }}</th></tr>
+</thead>
+{% include 'publication_infos.html' %}
+</table>
+{% endblock %}

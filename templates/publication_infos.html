@@ -1,0 +1,73 @@
+<tr><td>
+{# Authors #}
+{{ article.pubauthors | reverse |
+replace(";", " dna ", 1) | reverse | replace(";", ", ") | trim }}.
+{% if article.pubauthors | length > 45 %}<br />{% endif %}
+
+{# Title #}
+<em>
+{%- if article.puburl | length > 0 -%}
+<a href="{{article.puburl}}">
+{%- elif article.pubdoi | length > 0 -%}
+<a href="https://dx.doi.org/{{article.pubdoi}}">
+{%- endif -%}
+{{article.pubtitle | default(article.title)}}
+{%- if article.puburl | length > 0 or article.pubdoi | length > 0 -%}
+</a>
+{%- endif %}.</em>
+
+{# Article #}
+{% if article.pubkind | default("article") == "article" %}
+
+<br />
+{% if article.pubstatus == "submitted" or article.pubstatus == "accepted" -%}
+	Submitted to
+{%- elif article.pubstatus == "published" -%}
+	Published in
+{%- endif %}
+
+{% if article.pubjournalurl | length > 0 -%}
+	<a href="{{article.pubjournalurl}}">{{article.pubjournal}}</a>
+{%- else -%}
+	{{article.pubjournal}}
+{%- endif -%}
+
+{%- if article.pubstatus == "published" -%}
+	, <strong>{{article.pubissue}}</strong>, {{article.pubstartpage}}
+	({{article.pubdate | truncate(4,True,"",0)}})
+{%- elif article.pubstatus == "accepted" %}
+	({{article.pubdate | truncate(4,True,"",0)}}). Accepted for publication.
+{%- elif article.pubstatus == "submitted" -%}
+	.
+{%- else %}<strong>Unknown article pubstatus</strong>{% endif %}
+
+{# Lecture notes #}
+{% elif article.pubkind == "lecture notes" %}
+{% if article.pubdate | length > 0 %}({{article.pubdate | truncate(4,True,"",0)}}).{% endif %}
+
+{# Unknown #}
+{% else %}
+<strong>Unknown article pubkind</strong>
+{% endif %}
+
+<br />
+{# Annotations and attachments #}
+{% if article.pubpreprint | length > 0 -%}
+[<a href="{{article.pubpreprint}}">preprint</a>]
+{% endif %}
+{% if article.pubslides | length > 0 -%}
+[<a href="{{article.pubslides}}">slides</a>]
+{% endif %}
+{% if article.pubcode | length > 0 -%}
+[<a href="{{article.pubcode}}">code</a>]
+{% endif %}
+{% if article.pubdata | length > 0 -%}
+[<a href="{{article.pubdata}}">data</a>]
+{% endif %}
+{% if article.pubdoi | length > 0 -%}
+[DOI <a href="https://dx.doi.org/{{article.pubdoi}}">{{article.pubdoi}}</a>]
+{% endif %}
+{% if article.pubbib | length > 0 -%}
+[<a href="{{article.pubbib}}">bib</a>]
+{% endif %}
+</td></tr>
