@@ -39,15 +39,15 @@ replace(";", " dna ", 1) | reverse | replace(";", ", ") | trim }}.
 	({{article.pubdate | truncate(4,True,"",0)}}). Accepted for publication.
 {%- elif article.pubstatus == "submitted" -%}
 	.
-{%- else %}<strong>Unknown article pubstatus</strong>{% endif %}
+{%- else %}<strong>Unknown article pubstatus {{article.pubstatus}}</strong>{% endif %}
 
-{# Lecture notes #}
-{% elif article.pubkind == "lecture notes" %}
+{# Lecture notes or Code #}
+{% elif article.pubkind == "lecture notes" or article.pubkind == "code" %}
 {% if article.pubdate | length > 0 %}({{article.pubdate | truncate(4,True,"",0)}}).{% endif %}
 
 {# Unknown #}
 {% else %}
-<strong>Unknown article pubkind</strong>
+<strong>Unknown article pubkind {{article.pubkind}}</strong>
 {% endif %}
 
 <br />
