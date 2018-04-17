@@ -1,48 +1,47 @@
 {% if SIDEDETAILS %}
 {% for elem in SIDEDETAILS %}
-	{% set typestr = (elem.type | default('page') | string) %}
+	{# Preprocessing #}
+	{% set ns = namespace(objects=[],selector=None) %}
+	{% if elem.type | default('page') == 'page' %}
+		{% set ns.objects = (pages | selectattr(elem.filter.0, "equalto", elem.filter.1)) %}
+		{% if page is defined %}
+			{% set ns.selector = page %}
+		{% endif %}
+	{% elif elem.type == 'article' and elem.filter.0 == 'tag' %}
+		{% for tag, articles in tags if tag == elem.filter.1 %}
+			{% set ns.objects = articles %}
+		{% endfor %}
+		{{ objects }}
+		{% if article is defined %}
+			{% set ns.selector = article %}
+		{% endif %}
+	{% elif elem.type == 'article' and elem.filter.0 == 'category' %}
+		{% for category, articles in categories if category == elem.filter.1 %}
+			{% set ns.objects = articles %}
+		{% endfor %}
+		{% if article is defined %}
+			{% set ns.selector = article %}
+		{% endif %}
+	{% endif %}
+
+	{# Display #}
 	<div class="widget">
 	<h2>{{ elem.label }}</h2>
 	<ul>
-	{% if typestr == 'page' %}
-		{% set pages = (pages
-				| selectattr(elem.filter.0, "equalto", elem.filter.1)
-				| sort(attribute=(elem.sortkey | default('date')))
-				)[-(elem.max|default(100)):] %}
-		{% if elem.reverse_selection | default(false) %}
-			{% set pages = ( pages | reverse ) %}
-		{% endif %}
+	{% set ns.objects = (ns.objects | sort(attribute=(elem.sortkey | default('date')))
+						)[-(elem.max|default(100)):] %}
+	{% if elem.reverse_selection | default(false) %}
+		{% set ns.objects = (ns.objects | reverse ) %}
+	{% endif %}
 
-		{% for p in pages %}
-		<li {% if page is defined and  p.url == page.url %}class="active"{% endif %}><a href="{{ SITEURL }}/{{ p.url }}">{{p.shorttitle | default(p.title)}}</a></li>
-		{% endfor %}
-	{% elif typestr == 'article' and elem.filter.0 == 'category' %}
-		{% for category,articles in categories if category == elem.filter.1 %}
-		{% set articles = (articles
-					| sort(attribute=(elem.sortkey | default('date')))
-				  ) [-(elem.max|default(100)):] %}
-		{% if elem.reverse_selection | default(false) %}
-			{% set articles = ( articles | reverse ) %}
-		{% endif %}
+	{% for ob in ns.objects %}
+		<li {% if ns.selector and ob.url == ns.selector.url %}class="active"{% endif %}>
+			<a href="{{ SITEURL }}/{{ ob.url }}">{{ob.shorttitle | default(ob.title)}}</a>
+		</li>
+	{% endfor %}
 
-		{% for a in articles %}
-		<li {% if article is defined and a.url == article.url %}class="active"{% endif %}><a href="{{ SITEURL }}/{{ a.url }}">{{ a.shorttitle | default(a.title)}}</a></li>
-		{% endfor %}
-		{% endfor %}
-	{% elif typestr == 'article' and elem.filter.0 == 'tag' %}
-		{% for tag,articles in tags if tag == elem.filter.1 %}
-		{% set articles = (articles
-					| sort(attribute=(elem.sortkey | default('date')))
-				  ) [-(elem.max|default(100)):] %}
-		{% if elem.reverse_selection | default(false) %}
-			{% set articles = ( articles | reverse ) %}
-		{% endif %}
-
-		{% for a in articles %}
-		<li {% if article is defined and a.url == article.url %}class="active"{% endif %}><a href="{{ SITEURL }}/{{ a.url }}">{{ a.shorttitle | default(a.title)}}</a></li>
-		{% endfor %}
-		{% endfor %}
-	{# TODO #}
+	{% if elem.final_link %}
+	<li><em><a href="{{ SITEURL }}/{{elem.final_link.1}}">{{elem.final_link.0}}</a></em></li>
 	{% endif %}
 	</ul>
 	</div>
