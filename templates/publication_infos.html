@@ -61,17 +61,17 @@ replace(";", " dna ", 1) | reverse | replace(";", ", ") | trim }}.
 {# Annotations and attachments #}
 {% for attname in ["preprint", "slides", "code", "data", "doi", "bib"] %}
 	{% if article | attr("pub" + attname) | length > 0 -%}
+		{% set url = article | attr("pub" + attname) %}
+		{% set urltext = attname %}
 		{% if attname == "doi" %}
 			{% set url = "https://dx.doi.org/" + article.pubdoi %}
-			{% set text = "DOI " + article.pubdoi %}
-		{% else %}
-			{% set url = article | attr("pub" + attname) %}
-			{% set text = attname %}
+			{% set pretext = "DOI " %}
+			{% set urltext = article.pubdoi %}
 		{% endif %}
 		{% if url[0] == "/" %}
 			{% set url = SITEURL + url %}
 		{% endif -%}
-		[<a href="{{url}}">{{text}}</a>]
+		[{{pretext}}<a href="{{url}}">{{urltext}}</a>]
 	{% endif %}
 {% endfor %}
 </td></tr>
