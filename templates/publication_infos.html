@@ -48,8 +48,8 @@ replace(";", " dna ", 1) | reverse | replace(";", ", ") | trim }}.
 	.
 {%- else %}<strong>Unknown article pubstatus {{article.pubstatus}}</strong>{% endif %}
 
-{# Lecture notes or Code #}
-{% elif article.pubkind == "lecture notes" or article.pubkind == "code" %}
+{# Lecture notes or Code or thesis #}
+{% elif article.pubkind == "lecture notes" or article.pubkind == "code" or article.pubkind == "thesis"%}
 {% if article.pubdate | length > 0 %}({{article.pubdate | truncate(4,True,"",0)}}).{% endif %}
 
 {# Unknown #}
@@ -59,7 +59,7 @@ replace(";", " dna ", 1) | reverse | replace(";", ", ") | trim }}.
 
 <br />
 {# Annotations and attachments #}
-{% for attname in ["preprint", "slides", "code", "data", "doi", "bib"] %}
+{% for attname in ["preprint", "slides", "code", "data", "details", "doi", "bib"] %}
 	{% if article | attr("pub" + attname) | length > 0 -%}
 		{% set url = article | attr("pub" + attname) %}
 		{% set urltext = attname %}
@@ -67,6 +67,9 @@ replace(";", " dna ", 1) | reverse | replace(";", ", ") | trim }}.
 			{% set url = "https://dx.doi.org/" + article.pubdoi %}
 			{% set pretext = "DOI " %}
 			{% set urltext = article.pubdoi %}
+		{% endif %}
+		{% if attname == "details" %}
+			{% set urltext = "Further details" %}
 		{% endif %}
 		{% if url[0] == "/" %}
 			{% set url = SITEURL + url %}
