@@ -69,7 +69,7 @@ replace(";", " dna ", 1) | reverse | replace(";", ", ") | trim }}.
 			{% set urltext = article.pubdoi %}
 		{% endif %}
 		{% if attname == "details" %}
-			{% set urltext = "Further details" %}
+			{% set urltext = "further details" %}
 		{% endif %}
 		{% if url[0] == "/" %}
 			{% set url = SITEURL + url %}
