@@ -27,26 +27,32 @@ replace(";", " dna ", 1) | reverse | replace(";", ", ") | trim }}.
 {%- if article.pubkind | default("article") == "article" -%}
 
 <br />
-{% if article.pubstatus == "submitted" or article.pubstatus == "accepted" -%}
-	Submitted to
-{%- elif article.pubstatus == "published" -%}
-	Published in
+{% if article.pubjournal | length > 0 -%}
+	{% if article.pubstatus == "submitted" or article.pubstatus == "accepted" -%}
+		Submitted to
+	{%- elif article.pubstatus == "published" -%}
+		Published in
+	{%- endif %}
+
+	{% if article.pubjournalurl | length > 0 -%}
+		<a href="{{article.pubjournalurl}}">{{article.pubjournal}}</a>
+	{%- else -%}
+		{{article.pubjournal}}
+	{%- endif -%}
+
+	{%- if article.pubstatus == "published" -%}
+		, <strong>{{article.pubissue}}</strong>, {{article.pubstartpage}}
+		({{article.pubdate | truncate(4,True,"",0)}})
+	{%- elif article.pubstatus == "accepted" %}
+		({{article.pubdate | truncate(4,True,"",0)}}). Accepted for publication.
+	{%- elif article.pubstatus == "submitted" -%}
+		.
+	{%- else %}<strong>Unknown article pubstatus {{article.pubstatus}}</strong>{% endif %}
+{% else -%}
+	{% if article.pubstatus == "submitted" %}Submitted.
+	{%- else %}<strong>No journal specified</strong>
+	{%- endif %}
 {%- endif %}
-
-{% if article.pubjournalurl | length > 0 -%}
-	<a href="{{article.pubjournalurl}}">{{article.pubjournal}}</a>
-{%- else -%}
-	{{article.pubjournal}}
-{%- endif -%}
-
-{%- if article.pubstatus == "published" -%}
-	, <strong>{{article.pubissue}}</strong>, {{article.pubstartpage}}
-	({{article.pubdate | truncate(4,True,"",0)}})
-{%- elif article.pubstatus == "accepted" %}
-	({{article.pubdate | truncate(4,True,"",0)}}). Accepted for publication.
-{%- elif article.pubstatus == "submitted" -%}
-	.
-{%- else %}<strong>Unknown article pubstatus {{article.pubstatus}}</strong>{% endif %}
 
 {# Lecture notes or Code or thesis #}
 {% elif article.pubkind == "lecture notes" or article.pubkind == "code" or article.pubkind == "thesis"%}
