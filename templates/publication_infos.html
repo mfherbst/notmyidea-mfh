@@ -42,7 +42,7 @@ replace(";", " dna ", 1) | reverse | replace(";", ", ") | trim }}.
 
 	{%- if article.pubstatus == "published" -%}
 		, <strong>{{article.pubissue}}</strong>, {{article.pubstartpage}}
-		({{article.pubdate | truncate(4,True,"",0)}})
+		({{article.pubdate | truncate(4,True,"",0)}}).
 	{%- elif article.pubstatus == "accepted" %}
 		({{article.pubdate | truncate(4,True,"",0)}}). Accepted for publication.
 	{%- elif article.pubstatus == "submitted" -%}
