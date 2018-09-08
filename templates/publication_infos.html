@@ -12,7 +12,7 @@ replace(";", " dna ", 1) | reverse | replace(";", ", ") | trim }}.
 		{% set url = SITEURL + url %}
 	{% endif %}
 {% elif article.pubdoi | length > 0 %}
-	{% set url = "https://dx.doi.org/{{article.pubdoi}}" %}
+	{% set url = "https://dx.doi.org/" + article.pubdoi %}
 {% endif %}
 
 {%- if url -%}
