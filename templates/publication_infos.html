@@ -12,7 +12,7 @@ replace(";", " dna ", 1) | reverse | replace(";", ", ") | trim }}.
 		{% set url = SITEURL + url %}
 	{% endif %}
 {% elif article.pubdoi | length > 0 %}
-	{% set url = "https://dx.doi.org/" + article.pubdoi %}
+	{% set url = "https://doi.org/" + article.pubdoi %}
 {% endif %}
 
 {%- if url -%}
@@ -71,7 +71,7 @@ replace(";", " dna ", 1) | reverse | replace(";", ", ") | trim }}.
 		{% set url = article | attr("pub" + attname) %}
 		{% set urltext = attname %}
 		{% if attname == "doi" %}
-			{% set url = "https://dx.doi.org/" + article.pubdoi %}
+			{% set url = "https://doi.org/" + article.pubdoi %}
 			{% set pretext = "DOI " %}
 			{% set urltext = article.pubdoi %}
 		{% endif %}
