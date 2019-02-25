@@ -64,6 +64,14 @@ replace(";", " dna ", 1) | reverse | replace(";", ", ") | trim }}.
 <strong>Unknown article pubkind {{article.pubkind}}</strong>
 {% endif -%}
 
+{%- if article.pubaward | length > 0 %}
+	<br />{{article.pubaward}}
+{% endif %}
+
+{# Normalisation #}
+{# Normalisation -> if details is missing point to current article #}
+{# If no preprint, but arxiv is present, point to arxiv pdf #}
+
 <br />
 {# Annotations and attachments #}
 {% for attname in ["doi", "bib", "preprint", "arxiv", "slides", "code", "data", "errata", "details"] %}
