@@ -28,7 +28,7 @@
 	<div class="widget">
 	<h2>{{ elem.label }}</h2>
 	<ul>
-	{% set ns.objects = (ns.objects | sort(attribute=(elem.sortkey | default('date')))
+	{% set ns.objects = (ns.objects | rejectattr("sidedetailshidden") | sort(attribute=(elem.sortkey | default('date')))
 						)[-(elem.max|default(100)):] %}
 	{% if elem.reverse_selection | default(false) %}
 		{% set ns.objects = (ns.objects | reverse ) %}
