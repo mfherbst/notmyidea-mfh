@@ -74,7 +74,7 @@ replace(";", " dna ", 1) | reverse | replace(";", ", ") | trim }}.
 
 <br />
 {# Annotations and attachments #}
-{% for attname in ["doi", "bib", "preprint", "arxiv", "slides", "code", "data", "errata", "details"] %}
+{% for attname in ["doi", "bib", "preprint", "pdf", "arxiv", "slides", "code", "data", "errata", "details"] %}
 	{% if article | attr("pub" + attname) | length > 0 -%}
 		{% set url = article | attr("pub" + attname) %}
 		{% set urltext = attname %}
