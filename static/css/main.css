@@ -114,6 +114,9 @@ blockquote {
 cite {}
 q {}
 
+/* Non-breaking text fileds */
+span.nobreak {white-space: nowrap;}
+
 /* Tables */
 table {margin: .5em auto 1.5em auto; width: 98%;}
 

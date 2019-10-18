@@ -74,7 +74,8 @@ replace(";", " dna ", 1) | reverse | replace(";", ", ") | trim }}.
 
 <br />
 {# Annotations and attachments #}
-{% for attname in ["doi", "bib", "preprint", "pdf", "arxiv", "slides", "code", "data", "errata", "details"] %}
+{% for attname in ["doi", "bib", "preprint", "pdf", "hal", "arxiv", "slides", "code",
+				   "data", "errata", "details"] %}
 	{% if article | attr("pub" + attname) | length > 0 -%}
 		{% set url = article | attr("pub" + attname) %}
 		{% set urltext = attname %}
@@ -87,13 +88,17 @@ replace(";", " dna ", 1) | reverse | replace(";", ", ") | trim }}.
 			{% set url = "https://arxiv.org/abs/" + article.pubarxiv %}
 			{% set urltext = "arXiv:" + article.pubarxiv %}
 		{% endif %}
+		{% if attname == "hal" %}
+			{% set url = "https://hal.archives-ouvertes.fr/" + article.pubhal %}
+			{% set urltext = article.pubhal %}
+		{% endif %}
 		{% if attname == "details" %}
 			{% set urltext = "further details" %}
 		{% endif %}
 		{% if url[0] == "/" %}
 			{% set url = SITEURL + url %}
 		{% endif -%}
-		[{{pretext}}<a href="{{url}}">{{urltext}}</a>]
+		<span class="nobreak">[{{pretext}}<a href="{{url}}">{{urltext}}</a>]</span>
 	{% endif %}
 {% endfor %}
 </td></tr>
