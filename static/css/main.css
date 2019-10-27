@@ -400,6 +400,7 @@ img.githubRight {position: absolute; top: 0; left: 0; border: 0; }
 .social a[href*='orcid.org']:before {content: url('../images/icons/orcid.png'); margin-right: .8ex; vertical-align: -4px;}
 .social a[href*='github.com']:before {content: url('../images/icons/github.png'); margin-right: .8ex; vertical-align: -4px;}
 .social a[href*='gitlab.com']:before {content: url('../images/icons/gitlab.png'); margin-right: .8ex; vertical-align: -4px;}
+.social img.logo { width:16px; height:16px; margin-right: .8ex; vertical-align: -4px; }
 
 /* Tagcloud */
 ul.tagcloud {
