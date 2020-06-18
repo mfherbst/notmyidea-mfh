@@ -2,6 +2,16 @@
 {% block pagecontent %}
 {{ page.content }}
 
+{% set keymap = {"code": "Software", "article": "Journal articles", "thesis": "Theses"} %}
+
+<ul>
+	{% for kind, _ in (articles
+		| selectattr("pubauthors", "defined") | groupby("pubkind")) %}
+	<li><a href="#{{kind}}">{{ keymap.get(kind, kind) }}</a></li>
+	{% endfor %}
+	<li><a href="#lecture-notes">Lecture notes</a></li>
+</ul>
+
 {# Do all the other publications first #}
 {% for kind, list in ( articles
 	| selectattr("pubauthors", "defined")
@@ -9,7 +19,7 @@
 <table>
 <thead>
 <tr>
-	<th>{{ kind }}</th>
+	<th id="{{kind}}">{{ keymap.get(kind, kind) }}</th>
 </tr>
 </thead>
 {% for article in list | sort(attribute='pubdate', reverse=True) %}
@@ -22,7 +32,7 @@
 <table>
 <thead>
 <tr>
-	<th>Lecture notes</th>
+	<th id="lecture-notes">Lecture notes</th>
 </tr>
 </thead>
 {% for article in ( pages
