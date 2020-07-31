@@ -55,7 +55,7 @@ replace(";", " dna ", 1) | reverse | replace(";", ", ") | trim }}.
 {%- endif %}
 
 {# Lecture notes or Code or thesis #}
-{% elif article.pubkind == "lecture notes" or article.pubkind == "code" or article.pubkind == "thesis"%}
+{% elif article.pubkind in ["lecture notes", "code", "thesis", "recorded"] %}
 {% if article.pubkind == "thesis" and article.pubthesis %}{{article.pubthesis}} {% endif %}
 {% if article.pubdate | length > 0 %}({{article.pubdate | truncate(4,True,"",0)}}).{% endif %}
 

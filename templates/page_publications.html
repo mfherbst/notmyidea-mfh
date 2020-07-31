@@ -2,7 +2,8 @@
 {% block pagecontent %}
 {{ page.content }}
 
-{% set keymap = {"code": "Software", "article": "Journal articles", "thesis": "Theses"} %}
+{% set keymap = {"code": "Software", "article": "Journal articles", "thesis": "Theses",
+                 "recorded": "Recorded talks or lectures", } %}
 
 <ul>
 	{% for kind, _ in (articles
