@@ -24,7 +24,7 @@
                     <li {% if
                               ( page is defined and page.url == url )
                            or ( title in MENUSUBITEMS
-                                  and ( page is defined 
+                                  and ( page is defined
                                         and page.url in (MENUSUBITEMS[title] | map("last"))
                                       ) or (
                                         output_file in (MENUSUBITEMS[title] | map("last"))

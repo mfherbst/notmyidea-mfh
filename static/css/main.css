@@ -55,6 +55,14 @@ a:hover, a:active, a.active, .active>a {
     color: #1a4699;
     text-decoration: underline;
 }
+a.stealth:link, a.stealth {
+    color: #000;
+}
+a.stealth:hover, a.stealth:active {
+    color: #1a4699;
+    text-decoration:underline;
+}
+
 
 /* Paragraphs */
 p {margin-bottom: 1.143em;}
@@ -503,3 +511,15 @@ li:last-child .hentry, #content > .hentry {border: 0; margin: 0;}
 #posts-list .hentry {padding-left: 10px; position: relative;}
 
 #posts-list footer { width: 85%; }
+
+ol.publication-list {
+    transform: rotate(180deg);
+}
+
+ol.publication-list > li {
+    transform: rotate(-180deg);
+    margin-bottom: 0.8em;
+}
+ol.publication-list > li:last-child {
+    margin-bottom: 0em;
+}

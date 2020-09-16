@@ -1,10 +1,13 @@
 {% extends "article.html" %}
 {% block article_payload %}
 {{ article.content }}
+{% set from_article = True %}
 <table>
 <thead>
 <tr><th>{{article.pubkind | default("article") | capitalize }}</th></tr>
 </thead>
+<tr><td>
 {% include 'publication_infos.html' %}
+</td></tr>
 </table>
 {% endblock %}

@@ -1,104 +1,96 @@
-<tr><td>
-{# Authors #}
-{{ article.pubauthors | reverse |
-replace(";", " dna ", 1) | reverse | replace(";", ", ") | trim }}.
-{% if article.pubauthors | length > 45 %}<br />{% endif %}
-
-{# Title #}
-<em>
-{%- if article.puburl | length > 0 %}
-	{% set url = article.puburl %}
-	{% if url[0] == "/" %}
-		{% set url = SITEURL + url %}
-	{% endif %}
-{% elif article.pubdoi | length > 0 %}
-	{% set url = "https://doi.org/" + article.pubdoi %}
-{% endif %}
-
-{%- if url -%}
-<a href="{{url}}">
+{# Author #}
+{%- if article.pubkind | default("article") in ["article", "code"] -%}
+	{%- set author -%}
+		{{ article.pubauthors | reverse |
+		replace(";", " dna ", 1) | reverse | replace(";", ", ") | trim }}.
+	{%- endset -%}
 {%- endif -%}
-{{article.pubtitle | default(article.title)}}
-{%- if url -%}
-</a>
-{%- endif %}.</em>
 
-{# Article #}
-{%- if article.pubkind | default("article") == "article" -%}
-
-<br />
-{% if article.pubjournal | length > 0 -%}
-	{% if article.pubstatus == "submitted" or article.pubstatus == "accepted" -%}
-		Submitted to
-	{%- elif article.pubstatus == "published" -%}
-		Published in
-	{%- endif %}
-
-	{% if article.pubjournalurl | length > 0 -%}
-		<a href="{{article.pubjournalurl}}">{{article.pubjournal}}</a>
-	{%- else -%}
-		{{article.pubjournal}}
-	{%- endif -%}
-
-	{%- if article.pubstatus == "published" -%}
-		, <strong>{{article.pubissue}}</strong>, {{article.pubstartpage}}
-		({{article.pubdate | truncate(4,True,"",0)}}).
-	{%- elif article.pubstatus == "accepted" %}
-		({{article.pubdate | truncate(4,True,"",0)}}). Accepted for publication.
-	{%- elif article.pubstatus == "submitted" -%}
-		.
-	{%- else %}<strong>Unknown article pubstatus {{article.pubstatus}}</strong>{% endif %}
-{% else -%}
-	{% if article.pubstatus == "submitted" %}Submitted.
-	{%- else %}<strong>No journal specified</strong>
-	{%- endif %}
-{%- endif %}
-
-{# Lecture notes or Code or thesis #}
-{% elif article.pubkind in ["lecture notes", "code", "thesis", "recorded"] %}
-{% if article.pubkind == "thesis" and article.pubthesis %}{{article.pubthesis}} {% endif %}
-{% if article.pubdate | length > 0 %}({{article.pubdate | truncate(4,True,"",0)}}).{% endif %}
-
-{# Unknown #}
-{% else %}
-<strong>Unknown article pubkind {{article.pubkind}}</strong>
-{% endif -%}
-
-{%- if article.pubaward | length > 0 %}
-	<br />{{article.pubaward}}
-{% endif %}
-
-{# Normalisation #}
-{# Normalisation -> if details is missing point to current article #}
-{# If no preprint, but arxiv is present, point to arxiv pdf #}
-
-<br />
-{# Annotations and attachments #}
-{% for attname in ["doi", "bib", "preprint", "pdf", "hal", "arxiv", "slides", "code",
-				   "data", "errata", "details"] %}
+{# Find "best" url and identifier #}
+{% set tags = namespace(url="", idtext="", idurl="") %}
+{% for attname in ["url", "pdf", "preprint", "hal", "arxiv", "doi"] %}
 	{% if article | attr("pub" + attname) | length > 0 -%}
-		{% set url = article | attr("pub" + attname) %}
-		{% set urltext = attname %}
 		{% if attname == "doi" %}
-			{% set url = "https://doi.org/" + article.pubdoi %}
-			{% set pretext = "DOI " %}
-			{% set urltext = article.pubdoi %}
-		{% endif %}
-		{% if attname == "arxiv" %}
-			{% set url = "https://arxiv.org/abs/" + article.pubarxiv %}
-			{% set urltext = "arXiv:" + article.pubarxiv %}
-		{% endif %}
-		{% if attname == "hal" %}
-			{% set url = "https://hal.archives-ouvertes.fr/" + article.pubhal %}
-			{% set urltext = article.pubhal %}
-		{% endif %}
-		{% if attname == "details" %}
-			{% set urltext = "further details" %}
-		{% endif %}
-		{% if url[0] == "/" %}
-			{% set url = SITEURL + url %}
+			{% set tags.idurl = "https://doi.org/" + article.pubdoi %}
+			{% set tags.idtext = "DOI " + article.pubdoi %}
+		{% elif attname == "arxiv" %}
+			{% set tags.idurl = "https://arxiv.org/abs/" + article.pubarxiv %}
+			{% set tags.idtext = "arXiv:" + article.pubarxiv %}
+		{% elif attname == "hal" %}
+			{% set tags.idurl = "https://hal.archives-ouvertes.fr/" + article.pubhal %}
+			{% set tags.idtext = article.pubhal %}
 		{% endif -%}
-		<span class="nobreak">[{{pretext}}<a href="{{url}}">{{urltext}}</a>]</span>
+		{% if tags.url | length == 0 and article | attr("pub" + attname) | length > 0 %}
+			{% set tags.url = article | attr("pub" + attname) %}
+		{% endif %}
 	{% endif %}
 {% endfor %}
-</td></tr>
+{% if tags.url and tags.url[0] == "/" %}
+	{% set tags.url = SITEURL + tags.url %}
+{% endif %}
+
+{# Title #}
+{% set title %}
+{%- if tags.url -%}<a href="{{tags.url}}">{%- endif -%}
+{{article.pubtitle | default(article.title)}}
+{%- if tags.url -%}</a>{%- endif %}
+{% endset %}
+
+{# Tag #}
+{%- if tags.idtext | length > 0 %}
+{% set tag -%}
+<span class="nobreak"><a class="stealth" href="{{tags.idurl}}">{{tags.idtext}}</a></span>
+{% endset %}
+{% endif -%}
+
+{# Details #}
+{%- if article.pubdetails | length > 0 -%}
+{# TODO Not always the case !#}
+{% set details -%}
+<span class="nobreak"><a href="{{article.pubdetails}}">{{
+	article.pubdetailstext | default("Blog article")
+}}</a>.</span>
+{%- endset %}
+{% endif %}
+
+{# Annotations #}
+{%- set annotations -%}
+{% for attname in ["bib", "slides", "code", "data", "errata"] %}
+	{% if article | attr("pub" + attname) | length > 0 -%}
+		{% set url = article | attr("pub" + attname) %}
+		{% if url[0] == "/" %}{% set url = SITEURL + url %}{% endif -%}
+		<span class="nobreak"><a class="stealth" href="{{url}}">[{{attname}}]</a></span>
+	{% endif %}
+{% endfor %}
+{% endset %}
+
+{# Date #}
+{% set date = "" %}
+{%- if article.pubdate | length > 0 -%}
+	{% set date -%}
+		({{article.pubdate | truncate(4,True,"",0) }})
+	{%- endset %}
+{%- endif -%}
+
+{# Body #}
+{% set body -%}
+{%- if article.pubkind | default("article") == "article" -%}
+	{{article.pubjournal | default("")}}
+	{%- if article.pubstatus == "published" -%}
+		, <span class="nobreak"><strong>{{article.pubissue}}</strong>, {{article.pubstartpage}}</span>
+	{%- else -%}
+		{%- set date %}({{article.pubstatus}}){% endset -%}
+	{% endif %}
+{% elif article.pubkind in ["lecture notes", "code", "thesis", "recorded"] -%}
+	{%- if article.pubkind == "thesis" and article.pubthesis -%}{{article.pubthesis}} {% endif -%}
+{%- else -%}
+<strong>Unknown article pubkind {{article.pubkind}}</strong>
+{%- endif -%}
+{% endset %}
+
+{# Display #}
+{{ author }}
+<em>{{ title }}.</em>
+{{ body }} {{ date }}. {{article.pubaward | default("")}}
+{{ tag }}{{ annotations }}
+{%- if not from_article | default(False) %}{{details}}{% endif -%}

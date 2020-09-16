@@ -3,44 +3,24 @@
 {{ page.content }}
 
 {% set keymap = {"code": "Software", "article": "Journal articles", "thesis": "Theses",
-                 "recorded": "Recorded talks or lectures", } %}
-
+                 "recorded": "Recorded talks or lectures",
+                 "lecture notes": "Lecture notes"} %}
 <ul>
-	{% for kind, _ in (articles
+	{% for kind, _ in ( (articles + pages)
 		| selectattr("pubauthors", "defined") | groupby("pubkind")) %}
 	<li><a href="#{{kind}}">{{ keymap.get(kind, kind) }}</a></li>
 	{% endfor %}
-	<li><a href="#lecture-notes">Lecture notes</a></li>
 </ul>
 
-{# Do all the other publications first #}
-{% for kind, list in ( articles
+{% for kind, list in ( (articles + pages)
 	| selectattr("pubauthors", "defined")
 	| groupby("pubkind")) %}
-<table>
-<thead>
-<tr>
-	<th id="{{kind}}">{{ keymap.get(kind, kind) }}</th>
-</tr>
-</thead>
-{% for article in list | sort(attribute='pubdate', reverse=True) %}
-{% include 'publication_infos.html' %}
+<h2 id="{{kind}}">{{ keymap.get(kind, kind) }}</h2>
+<ol class="publication-list">
+{% for article in list | sort(attribute='pubdate', reverse=False) %}
+<li>{% include 'publication_infos.html' %}</li>
 {% endfor %}
-</table>
+</ol>
 {% endfor %}
-
-{# Do all the lecture notes #}
-<table>
-<thead>
-<tr>
-	<th id="lecture-notes">Lecture notes</th>
-</tr>
-</thead>
-{% for article in ( pages
-	| selectattr("pubauthors", "defined")
-	| sort(attribute='pubdate', reverse=True)) %}
-{% include 'publication_infos.html' %}
-{% endfor %}
-</table>
 
 {% endblock %}
