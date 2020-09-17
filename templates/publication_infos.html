@@ -55,7 +55,7 @@
 
 {# Annotations #}
 {%- set annotations -%}
-{% for attname in ["bib", "slides", "code", "data", "errata"] %}
+{% for attname in ["bib", "slides", "code", "data"] %}
 	{% if article | attr("pub" + attname) | length > 0 -%}
 		{% set url = article | attr("pub" + attname) %}
 		{% if url[0] == "/" %}{% set url = SITEURL + url %}{% endif -%}
@@ -65,9 +65,9 @@
 {% endset %}
 
 {# Date #}
-{% set date = "" %}
+{% set ns = namespace(date="") %}
 {%- if article.pubdate | length > 0 -%}
-	{% set date -%}
+	{% set ns.date -%}
 		({{article.pubdate | truncate(4,True,"",0) }})
 	{%- endset %}
 {%- endif -%}
@@ -77,9 +77,9 @@
 {%- if article.pubkind | default("article") == "article" -%}
 	{{article.pubjournal | default("")}}
 	{%- if article.pubstatus == "published" -%}
-		, <span class="nobreak"><strong>{{article.pubissue}}</strong>, {{article.pubstartpage}}</span>
-	{%- else -%}
-		{%- set date %}({{article.pubstatus}}){% endset -%}
+		, <span class="nobreak"><strong>{{article.pubissue | default("?")}}</strong>, {{article.pubstartpage | default("?")}}</span>
+	{%- elif article.pubstatus != "accepted" -%}
+		{%- set ns.date %}({{article.pubstatus}}){% endset -%}
 	{% endif %}
 {% elif article.pubkind in ["lecture notes", "code", "thesis", "recorded"] -%}
 	{%- if article.pubkind == "thesis" and article.pubthesis -%}{{article.pubthesis}} {% endif -%}
@@ -91,6 +91,6 @@
 {# Display #}
 {{ author }}
 <em>{{ title }}.</em>
-{{ body }} {{ date }}. {{article.pubaward | default("")}}
+{{ body }} {{ ns.date }}. {{article.pubaward | default("")}}
 {{ tag }}{{ annotations }}
 {%- if not from_article | default(False) %}{{details}}{% endif -%}
