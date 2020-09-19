@@ -10,6 +10,11 @@
 		| selectattr("pubauthors", "defined") | groupby("pubkind")) %}
 	<li><a href="#{{kind}}">{{ keymap.get(kind, kind) }}</a></li>
 	{% endfor %}
+	{# TODO temporary, until a better solution is found #}
+	{% if page.talksposters | length > 0 %}
+	<li><a href="{{SITEURL + page.talksposters}}">Talks and Posters</a></li>
+	{% endif %}
+	{# TODO end temporary #}
 </ul>
 
 {% for kind, list in ( (articles + pages)
@@ -22,5 +27,12 @@
 {% endfor %}
 </ol>
 {% endfor %}
+
+{# TODO temporary, until a better solution is found #}
+{% if page.talksposters | length > 0 %}
+<h2>Talks and Posters</h2>
+See <a href="{{SITEURL + page.talksposters}}">List of talks and posters</a>.
+{% endif %}
+{# TODO end temporary #}
 
 {% endblock %}

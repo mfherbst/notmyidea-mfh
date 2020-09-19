@@ -1,0 +1,48 @@
+{% extends "page.html" %}
+{% block pagecontent %}
+
+{{ page.content }}
+
+{% set ns = namespace(alist=[]) %}
+{%- if page.highlights | length > 0 %}
+{% for article in articles | selectattr("pubkind", "in", ["article", "thesis"]) %}
+	{% for highlight in (page.highlights | trim).split(";") %}
+		{% set prefix = (highlight | trim).split(":")[0] %}
+		{% set rest = (highlight | trim).split(":")[1] %}
+		{% if article | attr("pub" + prefix) == rest %}
+			{% set ns.alist = ns.alist + [article] %}
+		{% endif %}
+	{% endfor %}
+{% endfor %}
+{% endif %}
+{% if ns.alist | length > 0 or page.blogtag | length > 0 %}
+<h2>Highlighted publications</h2>
+{% if page.blogtag | length > 0 %}
+{% endif %}
+<ul class="publication-list">
+{% for article in ns.alist | sort(attribute='pubdate', reverse=True) %}
+	<li>{% include 'publication_infos.html' %}</li>
+{% endfor %}
+{% if page.blogtag | length > 0 %}
+<li><a href="{{ SITEURL }}/tag/{{ page.blogtag | lower | replace(" ", "-") }}.html">Related blog articles</a></li>
+{% endif %}
+</ul>
+{% endif %}
+
+<h2>Other research projects</h2>
+<ul>
+{%- set selected = (pages | selectattr("template", "equalto", "page_project")
+                          | sort(attribute='priority', reverse=False)) %}
+{% for i in range(selected | length) %}
+	{% if selected[i] == page %}
+		{% if i > 0 %}
+		<li>Previous: <a href="{{ SITEURL }}/{{ selected[i-1].url }}">{{ selected[i-1].title }}</a></li>
+		{% endif %}
+		{% if i + 1 < selected | length %}
+		<li>Next: <a href="{{ SITEURL }}/{{ selected[i+1].url }}">{{ selected[i+1].title }}</a></li>
+		{% endif %}
+	{% endif %}
+{% endfor -%}
+</ul>
+
+{% endblock %}

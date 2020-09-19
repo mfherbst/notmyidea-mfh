@@ -1,0 +1,23 @@
+{% extends "page.html" %}
+{% block pagecontent %}
+
+{{ page.content }}
+
+<hr class="featured-separator" />
+{%- set selected = (pages | selectattr("template", "equalto", "page_project")
+                          | sort(attribute='priority', reverse=False)) %}
+<ol id="posts-list" class="hfeed">
+{% for page in selected %}
+<li><article class="hentry">
+		<header>
+				<h1><a href="{{ SITEURL }}/{{ page.url }}">{{ page.title }}</a></h1>
+		</header>
+		{% if page.image %}<div class="centered"><a href="{{ SITEURL }}/{{ page.url }}"><img class="cover-image" alt="Cover Image" src="{{ SITEURL }}/{{ page.image }}" /></a></div>{% endif %}
+		<div class="entry-content">
+			{{ page.summary }}
+			<a class="readmore" href="{{ SITEURL }}/{{ page.url }}">read more</a>
+		</div>
+</article></li>
+{% endfor %}
+</ol>
+{% endblock %}
