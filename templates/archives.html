@@ -11,7 +11,12 @@
 {% endif %}
 
 <dl>
+{% set ns = namespace(year="0") %}
 {% for article in dates %}
+    {% if article.date | string | truncate(4,True,"",0) != ns.year %}
+        {% set ns.year = article.date | string | truncate(4,True,"",0) -%}
+        </dl><h2>{{article.date | string | truncate(4,True,"",0)}}</h2><dl>
+    {%- endif %}
     <dt>{{ article.locale_date }}</dt>
     <dd><a href='{{ article.url }}'>{{ article.title }}</a></dd>
 {% endfor %}
